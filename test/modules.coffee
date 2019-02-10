@@ -32,6 +32,7 @@
 # As a subsitute for `export var name = …` and `export function name {}`,
 # CoffeeScript also supports:
 # export name = …
+# export { name1, name2 } = …
 
 # CoffeeScript also supports optional commas within `{ … }`.
 
@@ -389,6 +390,21 @@ test "export default multiline function", ->
     export default function(foo) {
       return console.log(foo);
     };"""
+
+test "export splat assignment", ->
+  eqJS """
+      export {foo, bar} = item
+    """,
+    """
+      var foo, bar;
+
+      ({foo, bar} = item);
+
+      export {
+        foo,
+        bar
+      };
+    """
 
 test "export assignment function", ->
   eqJS """

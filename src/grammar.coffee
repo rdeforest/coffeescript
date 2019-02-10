@@ -451,6 +451,8 @@ grammar =
   Export: [
     o 'EXPORT { }',                                          -> new ExportNamedDeclaration new ExportSpecifierList []
     o 'EXPORT { ExportSpecifierList OptComma }',             -> new ExportNamedDeclaration new ExportSpecifierList $3
+    o 'EXPORT Assignable = Expression',
+                  -> new ExportNamedDeclaration new Assign $3, $7, null,
     o 'EXPORT Class',                                        -> new ExportNamedDeclaration $2
     o 'EXPORT Identifier = Expression',                      -> new ExportNamedDeclaration new Assign $2, $4, null,
                                                                                                       moduleDeclaration: 'export'

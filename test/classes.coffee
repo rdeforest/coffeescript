@@ -372,6 +372,16 @@ test "nested classes", ->
   eq (new Outer.Inner).label, 'inner'
 
 
+test "#5222: correct 'this' in bound methods of nested classes", ->
+
+  class Outer
+    class @Inner
+      bound: =>
+        this
+
+  eq (new Outer.Inner).bound(), Outer.Inner
+
+
 test "variables in constructor bodies are correctly scoped", ->
 
   class A

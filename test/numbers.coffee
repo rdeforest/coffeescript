@@ -72,7 +72,8 @@ test "#2060: Disallow uppercase radix prefixes", ->
     doesNotThrow -> CoffeeScript.compile program, bare: yes
     throws -> CoffeeScript.compile program.toUpperCase(), bare: yes
 
-test "#5164: Allow uppercase exponent notation", ->
+test "#5164: Allow lowercase and uppercase exponent notation", ->
+  doesNotThrow -> CoffeeScript.compile "0e0", bare: yes
   doesNotThrow -> CoffeeScript.compile "0E0", bare: yes
 
 test "#2224: hex literals with 0b or B or E", ->

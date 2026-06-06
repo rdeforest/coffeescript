@@ -466,11 +466,11 @@ test "#5480: 'when a not in b'", ->
   switch
     when needle not in needleStack then ok false
 
-  switch "with subject"
+  switch "with subject" and true
     when needle     in    hayStack then ok false
-  switch "with subject"
+  switch "with subject" and true
     when needle not in    hayStack then ok true
-  switch "with subject"
+  switch "with subject" and true
     when needle     in needleStack then ok true
-  switch "with subject"
+  switch "with subject" and true
     when needle not in needleStack then ok false
